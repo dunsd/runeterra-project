@@ -1,6 +1,7 @@
 import React from "react";
 import './css/Main.css';
 import UserForm from "./UserForm";
+import APIDetails from "./APIDetails";
 
 const MainContent = () => {
 
@@ -8,6 +9,7 @@ const MainContent = () => {
         <div className="maincontent">
             Main Content
             <UserForm />
+            <APIDetails />
         </div>
     )
 }
