@@ -1,0 +1,13 @@
+
+.maincontent {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.footer, .header {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
