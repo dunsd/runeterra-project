@@ -47,6 +47,11 @@ const UserForm = () => {
                 </form>
             }
 
+            <div>
+                Current User: {userName}
+            </div>
+            
+
         </div>
     )
 }
