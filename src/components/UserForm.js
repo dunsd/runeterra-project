@@ -40,17 +40,13 @@ const UserForm = () => {
                         onChange={handleUserNameChange}
                         placeholder="Username"
                     />
-                
-
                     <input type="submit" value="Submit"></input>
-
                 </form>
             }
 
             <div>
                 Current User: {userName}
             </div>
-            
 
         </div>
     )
