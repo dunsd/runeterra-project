@@ -37,8 +37,8 @@ const MatchHistory = ({userInfo}) => {
                 {matchHistory.map((match, index) => {
                     return (
                         <li className="matchList" key={index}>
-                            Match {index}: {match}
-                            <button  id={index+1} onClick={(e) => getMatchInfo(e)}>Show match info</button>
+                            Match {index+1}: {match}
+                            <button  id={index} onClick={(e) => getMatchInfo(e)}>Show match info</button>
                         </li>
                     )
                 })}

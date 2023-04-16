@@ -26,9 +26,9 @@ const APIDetails = () => {
         <div className="matchContentDiv">
             <div className="userInfo">
                 <button onClick={() => getUser("Ulfilas")}>Get User</button>
-                <div className="userName">Account Name: {userInfo.name || ""}</div>
-                <div className="userPUUID">PUUID: {userInfo.puuid || ""}</div>
-                <div className="userLevel">Account Level: {userInfo.summonerLevel || ""}</div>
+                <div className="userName"><p className="userLabel">Account Name:</p> {userInfo.name || ""}</div>
+                <div className="userPUUID"><p className="userLabel">PUUID:</p> {userInfo.puuid || ""}</div>
+                <div className="userLevel"><p className="userLabel">Account Level:</p> {userInfo.summonerLevel || ""}</div>
             </div>
             <MatchHistory 
                 userInfo = {userInfo}
