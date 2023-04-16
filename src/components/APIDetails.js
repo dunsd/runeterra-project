@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fetchMatchHistory, fetchUserDetails } from "../services/APICalls";
+import { fetchMatchHistory, fetchMatchInfo, fetchUserDetails } from "../services/APICalls";
 
 const APIDetails = () => {
 
@@ -29,6 +29,11 @@ const APIDetails = () => {
         console.log(matchHistory);
     }
 
+    async function showMatchInfo(match) {
+        const matchInfo = await fetchMatchInfo(match);
+        console.log(matchInfo);
+    }
+
     return (
         <div>
             <button onClick={() => getUser("Ulfilas")}>Get User</button>
@@ -39,7 +44,9 @@ const APIDetails = () => {
             <ul className="matchHistory"> Match Codes: 
                 {matchHistory.map((match, index) => {
                     return (
-                        <li key={index}>Match {index}: {match}</li>
+                        <li key={index}>Match {index}: {match}
+                        <button onClick={() => showMatchInfo(matchHistory[index])}>Show match info</button>
+                        </li>
                     )
                 })}
             </ul>
