@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fetchUserDetails } from "../services/APICalls";
+import { fetchMatchHistory, fetchUserDetails } from "../services/APICalls";
 
 const APIDetails = () => {
 
@@ -9,11 +9,24 @@ const APIDetails = () => {
         return parsedAcc || "";
    });
 
+   const [matchHistory, setMatchHistory] = useState(() => {
+        const storedHistory = localStorage.getItem("matchHistory");
+        const parsedHistory = JSON.parse(storedHistory);
+        return parsedHistory || "";
+   })
+
     async function getUser(name) {
         const userData = await fetchUserDetails(name);
         setUserInfo(userData);
         localStorage.setItem("accountInfo", JSON.stringify(userData));
         console.log(userInfo);
+    }
+
+    async function getMatchHistory(puuid) {
+        const userMatchHistory = await fetchMatchHistory(puuid);
+        setMatchHistory(userMatchHistory);
+        localStorage.setItem('matchHistory', JSON.stringify(userMatchHistory));
+        console.log(matchHistory);
     }
 
     return (
@@ -22,6 +35,7 @@ const APIDetails = () => {
             <div className="userName">Account Name: {userInfo.name || ""}</div>
             <div className="userPUUID">PUUID: {userInfo.puuid || ""}</div>
             <div className="userLevel">Account Level: {userInfo.summonerLevel || ""}</div>
+            <button onClick={() => getMatchHistory(userInfo.puuid)}>Get Match History</button>
         </div>
     )
 }
