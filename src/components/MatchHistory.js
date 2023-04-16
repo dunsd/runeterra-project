@@ -31,14 +31,14 @@ const MatchHistory = ({userInfo}) => {
     }
 
     return (
-        <div>
+        <div className="matchHistoryDiv">
             <button onClick={() => getMatchHistory(userInfo.puuid)}>Get Match History</button>
             <ul className="matchHistory"> Match Codes: 
                 {matchHistory.map((match, index) => {
                     return (
-                        <li key={index}>
+                        <li className="matchList" key={index}>
                             Match {index}: {match}
-                            <button  id={index} onClick={(e) => getMatchInfo(e)}>Show match info</button>
+                            <button  id={index+1} onClick={(e) => getMatchInfo(e)}>Show match info</button>
                         </li>
                     )
                 })}

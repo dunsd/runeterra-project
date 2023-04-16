@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { fetchUserDetails } from "../services/APICalls";
 import MatchHistory from "./MatchHistory";
 
+
 const APIDetails = () => {
 
    const [userInfo, setUserInfo] = useState(() => {
@@ -22,11 +23,13 @@ const APIDetails = () => {
     
 
     return (
-        <div>
-            <button onClick={() => getUser("Ulfilas")}>Get User</button>
-            <div className="userName">Account Name: {userInfo.name || ""}</div>
-            <div className="userPUUID">PUUID: {userInfo.puuid || ""}</div>
-            <div className="userLevel">Account Level: {userInfo.summonerLevel || ""}</div>
+        <div className="matchContentDiv">
+            <div className="userInfo">
+                <button onClick={() => getUser("Ulfilas")}>Get User</button>
+                <div className="userName">Account Name: {userInfo.name || ""}</div>
+                <div className="userPUUID">PUUID: {userInfo.puuid || ""}</div>
+                <div className="userLevel">Account Level: {userInfo.summonerLevel || ""}</div>
+            </div>
             <MatchHistory 
                 userInfo = {userInfo}
             />

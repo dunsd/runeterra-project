@@ -25,7 +25,7 @@ const UserForm = () => {
     }
 
     return (
-        <div className="userDetails">
+        <div className="userForm">
             <button className="changeUserBtn" onClick={toggleForm}>Change User</button>
             {isVisible &&
                 <form 
@@ -40,7 +40,7 @@ const UserForm = () => {
                         onChange={handleUserNameChange}
                         placeholder="Username"
                     />
-                    <input type="submit" value="Submit"></input>
+                    <input className="submitBtn" type="submit" value="Submit"></input>
                 </form>
             }
 
