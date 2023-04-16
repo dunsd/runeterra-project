@@ -4,6 +4,7 @@ import MatchPopUp from "./MatchPopUp";
 
 const MatchHistory = ({userInfo}) => {
 
+    const [activeMatch, setActiveMatch] = useState("");
 
     const [matchToggle, setMatchToggle] = useState(false);
 
@@ -20,13 +21,14 @@ const MatchHistory = ({userInfo}) => {
         console.log(matchHistory);
     }
 
-    const showMatchInfo = () => {
+    async function getMatchInfo(e) {
+        const matchIndex = e.target.id;
+        const matchInfo = await fetchMatchInfo(matchHistory[matchIndex]);
+        console.log(matchInfo);
+        setActiveMatch(matchInfo);
         setMatchToggle(true);
+        return matchInfo;
     }
-    // async function showMatchInfo(match) {
-    //     const matchInfo = await fetchMatchInfo(match);
-    //     console.log(matchInfo);
-    // }
 
     return (
         <div>
@@ -36,7 +38,7 @@ const MatchHistory = ({userInfo}) => {
                     return (
                         <li key={index}>
                             Match {index}: {match}
-                            <button onClick={() => showMatchInfo(matchHistory[index])}>Show match info</button>
+                            <button  id={index} onClick={(e) => getMatchInfo(e)}>Show match info</button>
                         </li>
                     )
                 })}
@@ -44,6 +46,7 @@ const MatchHistory = ({userInfo}) => {
             {matchToggle &&
                 <MatchPopUp 
                     setMatchToggle = {setMatchToggle}
+                    activeMatch = {activeMatch}
                 />
             }
         </div>
