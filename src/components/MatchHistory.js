@@ -1,8 +1,11 @@
 import React, {useState} from "react";
 import { fetchMatchHistory, fetchMatchInfo } from "../services/APICalls";
+import MatchPopUp from "./MatchPopUp";
 
 const MatchHistory = ({userInfo}) => {
 
+
+    const [matchToggle, setMatchToggle] = useState(false);
 
     const [matchHistory, setMatchHistory] = useState(() => {
         const storedHistory = localStorage.getItem("matchHistory");
@@ -17,10 +20,13 @@ const MatchHistory = ({userInfo}) => {
         console.log(matchHistory);
     }
 
-    async function showMatchInfo(match) {
-        const matchInfo = await fetchMatchInfo(match);
-        console.log(matchInfo);
+    const showMatchInfo = () => {
+        setMatchToggle(true);
     }
+    // async function showMatchInfo(match) {
+    //     const matchInfo = await fetchMatchInfo(match);
+    //     console.log(matchInfo);
+    // }
 
     return (
         <div>
@@ -28,12 +34,18 @@ const MatchHistory = ({userInfo}) => {
             <ul className="matchHistory"> Match Codes: 
                 {matchHistory.map((match, index) => {
                     return (
-                        <li key={index}>Match {index}: {match}
-                        <button onClick={() => showMatchInfo(matchHistory[index])}>Show match info</button>
+                        <li key={index}>
+                            Match {index}: {match}
+                            <button onClick={() => showMatchInfo(matchHistory[index])}>Show match info</button>
                         </li>
                     )
                 })}
             </ul>
+            {matchToggle &&
+                <MatchPopUp 
+                    setMatchToggle = {setMatchToggle}
+                />
+            }
         </div>
     )
 }

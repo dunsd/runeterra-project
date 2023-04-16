@@ -13,3 +13,17 @@
     align-items: center;
     justify-content: center;
 }
+
+.matchPopUp {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 50vh;
+    height: 50vh;
+}
