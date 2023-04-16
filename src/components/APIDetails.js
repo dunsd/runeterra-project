@@ -36,6 +36,13 @@ const APIDetails = () => {
             <div className="userPUUID">PUUID: {userInfo.puuid || ""}</div>
             <div className="userLevel">Account Level: {userInfo.summonerLevel || ""}</div>
             <button onClick={() => getMatchHistory(userInfo.puuid)}>Get Match History</button>
+            <ul className="matchHistory"> Match Codes: 
+                {matchHistory.map((match, index) => {
+                    return (
+                        <li key={index}>Match {index}: {match}</li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }
