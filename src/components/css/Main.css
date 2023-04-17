@@ -28,17 +28,32 @@ button {
   border-radius: 8px;
   cursor: pointer;
   touch-action: manipulation;
+
+  transition-property: background-color;
+  transition-duration: 0.3s;
+
 }
 
+button:hover {
+    background-color: bisque;
 
-.footer, .header {
+}
+
+.header {
     display: flex;
-    height: 200px;
     align-items: center;
     justify-content: flex-start;
     padding-left: 10%;
     border-bottom: solid grey;
     margin-bottom: 2rem;
+    background-color: #AE9E9B;
+}
+
+.footer {
+    display: flex;
+    min-height: 5%;
+    align-items: center;
+    justify-content: center;
     background-color: #AE9E9B;
 }
 

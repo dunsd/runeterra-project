@@ -10,22 +10,21 @@ const APIDetails = () => {
         const parsedAcc = JSON.parse(storedAcc);
         return parsedAcc || "";
    });
-
    
-
-    async function getUser(name) {
-        const userData = await fetchUserDetails(name);
+    async function getUser() {
+        const currentUser = localStorage.getItem("userName");
+        const parsedUser = JSON.parse(currentUser);
+        let userData = await fetchUserDetails(parsedUser);
+        if(userData === undefined) userData = "";
         setUserInfo(userData);
         localStorage.setItem("accountInfo", JSON.stringify(userData));
         console.log(userInfo);
     } 
 
-    
-
     return (
         <div className="matchContentDiv">
             <div className="userInfo">
-                <button onClick={() => getUser("Ulfilas")}>Get User</button>
+                <button onClick={() => getUser()}>Get User</button>
                 <div className="userName"><p className="userLabel">Account Name:</p> {userInfo.name || ""}</div>
                 <div className="userPUUID"><p className="userLabel">PUUID:</p> {userInfo.puuid || ""}</div>
                 <div className="userLevel"><p className="userLabel">Account Level:</p> {userInfo.summonerLevel || ""}</div>
