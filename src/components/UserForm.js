@@ -40,7 +40,7 @@ const UserForm = () => {
                         onChange={handleUserNameChange}
                         placeholder="Username"
                     />
-                    <input className="submitBtn" type="submit" value="Submit"></input>
+                    
                 </form>
             }
 
