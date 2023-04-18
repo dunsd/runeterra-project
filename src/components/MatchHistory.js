@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { fetchMatchHistory, fetchMatchInfo } from "../services/APICalls";
 import MatchPopUp from "./MatchPopUp";
+import { addMatchHistory } from "../fbhandles/handleSubmit";
 
 const MatchHistory = ({userInfo}) => {
 
@@ -14,11 +15,11 @@ const MatchHistory = ({userInfo}) => {
         return parsedHistory || "";
     })
 
-    async function getMatchHistory(puuid) {
+    async function getMatchHistory(puuid, name) {
         const userMatchHistory = await fetchMatchHistory(puuid);
         setMatchHistory(userMatchHistory);
         localStorage.setItem('matchHistory', JSON.stringify(userMatchHistory));
-        console.log(matchHistory);
+        addMatchHistory(matchHistory, name);
     }
 
     async function getMatchInfo(e) {
@@ -32,7 +33,7 @@ const MatchHistory = ({userInfo}) => {
 
     return (
         <div className="matchHistoryDiv">
-            <button onClick={() => getMatchHistory(userInfo.puuid)}>Get Match History</button>
+            <button onClick={() => getMatchHistory(userInfo.puuid, userInfo.name)}>Get Match History</button>
             <ul className="matchHistory"> Match Codes: 
                 {matchHistory.map((match, index) => {
                     return (

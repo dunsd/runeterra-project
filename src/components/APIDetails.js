@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { fetchUserDetails } from "../services/APICalls";
 import MatchHistory from "./MatchHistory";
+import { newUser } from "../fbhandles/handleSubmit";
 
 
 const APIDetails = () => {
@@ -32,6 +33,7 @@ const APIDetails = () => {
             <MatchHistory 
                 userInfo = {userInfo}
             />
+            <button onClick={() => newUser(userInfo)}>New user</button>
         </div>
     )
 }

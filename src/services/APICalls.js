@@ -1,4 +1,5 @@
-import key from "./APIKey";
+const key = process.env.REACT_APP_RIOT_KEY;
+
 
 async function fetchUserDetails(id) {
     try {
@@ -8,9 +9,8 @@ async function fetchUserDetails(id) {
             mode: 'cors',
         });
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data;
-        
     }
     catch(error) {
         console.log(error);

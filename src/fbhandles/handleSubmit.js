@@ -1,0 +1,36 @@
+import { addDoc, collection, setDoc, doc, updateDoc } from "@firebase/firestore"
+import { firestore } from "../firebase_setup/firebase"
+
+const handleSubmit = (testdata) => {
+    const ref = collection(firestore, "test_data")
+
+    let data = {
+        testData: testdata
+    }
+
+    try {
+        addDoc(ref, data)
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+
+async function newUser(user) {
+    await setDoc(doc(firestore, "users", user.name), {
+        user: user
+    })
+}
+
+async function addMatchHistory(matches, user) {
+    console.log(user)
+    const userRef = doc(firestore, "users", user);
+    
+    await updateDoc(userRef, {
+        matches: matches
+    });
+
+}
+
+
+export { handleSubmit, newUser, addMatchHistory }
