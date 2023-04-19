@@ -1,26 +1,26 @@
 import React, {useState} from "react";
 import { fetchMatchHistory, fetchMatchInfo } from "../services/APICalls";
 import MatchPopUp from "./MatchPopUp";
-import { addMatchHistory } from "../fbhandles/handleSubmit";
+import { addMatchHistory, getMatches } from "../fbhandles/handleSubmit";
 
-const MatchHistory = ({userInfo}) => {
+const MatchHistory = ({userInfo, matchHistory, getMatchHistory}) => {
 
     const [activeMatch, setActiveMatch] = useState("");
 
     const [matchToggle, setMatchToggle] = useState(false);
 
-    const [matchHistory, setMatchHistory] = useState(() => {
-        const storedHistory = localStorage.getItem("matchHistory");
-        const parsedHistory = JSON.parse(storedHistory);
-        return parsedHistory || "";
-    })
+    // const [matchHistory, setMatchHistory] = useState(() => {
+    //     const storedHistory = localStorage.getItem("matchHistory");
+    //     const parsedHistory = JSON.parse(storedHistory);
+    //     return parsedHistory || "";
+    // })
 
-    async function getMatchHistory(puuid, name) {
-        const userMatchHistory = await fetchMatchHistory(puuid);
-        setMatchHistory(userMatchHistory);
-        localStorage.setItem('matchHistory', JSON.stringify(userMatchHistory));
-        addMatchHistory(matchHistory, name);
-    }
+    // async function getMatchHistory(puuid, name) {
+    //     const userMatchHistory = await fetchMatchHistory(puuid);
+    //     setMatchHistory(userMatchHistory);
+    //     localStorage.setItem('matchHistory', JSON.stringify(userMatchHistory));
+    //     addMatchHistory(matchHistory, name);
+    // }
 
     async function getMatchInfo(e) {
         const matchIndex = e.target.id;
