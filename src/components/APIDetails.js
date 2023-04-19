@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { fetchUserDetails, fetchMatchHistory } from "../services/APICalls";
 import MatchHistory from "./MatchHistory";
-import { checkUserExists, addMatchHistory } from "../fbhandles/handleSubmit";
+import { checkUserExists, addMatchHistory, newUser } from "../fbhandles/handleSubmit";
 
 
 const APIDetails = () => {
@@ -19,6 +19,7 @@ const APIDetails = () => {
         const currentUser = localStorage.getItem("userName");
         const parsedUser = JSON.parse(currentUser);
         let userData = await fetchUserDetails(parsedUser);
+        console.log(userData)
         if(!checkValidUser(userData)) userData = "";
         setUserInfo(userData);
         localStorage.setItem("accountInfo", JSON.stringify(userData));
@@ -32,13 +33,15 @@ const APIDetails = () => {
         if(userCheck !== false) {
             setUserInfo(userCheck.user);
             if(userCheck.matches) setMatchHistory(userCheck.matches);
-            
             console.log(matchHistory);
             console.log("Exists");
             console.log(userCheck.user);
             console.log(userCheck.matches);
         }   
         else {
+            const newUserData = await fetchUserDetails(parsedUser);
+            console.log(parsedUser)
+            newUser(newUserData);
             getUser();
         }
     }
