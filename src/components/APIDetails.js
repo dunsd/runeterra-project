@@ -31,7 +31,9 @@ const APIDetails = () => {
         const userCheck = await checkUserExists(parsedUser);
         if(userCheck !== false) {
             setUserInfo(userCheck.user);
-            setMatchHistory(userCheck.matches);
+            if(userCheck.matches) setMatchHistory(userCheck.matches);
+            
+            console.log(matchHistory);
             console.log("Exists");
             console.log(userCheck.user);
             console.log(userCheck.matches);
@@ -44,9 +46,10 @@ const APIDetails = () => {
     async function getMatchHistory(puuid, name) {
         const userMatchHistory = await fetchMatchHistory(puuid);
         setMatchHistory(userMatchHistory);
+        console.log(userMatchHistory);
         console.log(matchHistory)
-        localStorage.setItem('matchHistory', JSON.stringify(userMatchHistory));
-        addMatchHistory(matchHistory, name);
+        //localStorage.setItem('matchHistory', JSON.stringify(userMatchHistory));
+        addMatchHistory(userMatchHistory, name);
     }
 
     const checkValidUser = (userData) => {
