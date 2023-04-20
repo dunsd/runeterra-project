@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import { fetchMatchHistory, fetchMatchInfo } from "../services/APICalls";
+import { fetchMatchInfo } from "../services/APICalls";
 import MatchPopUp from "./MatchPopUp";
-import { addMatchHistory, getMatches } from "../fbhandles/handleSubmit";
 
 const MatchHistory = ({userInfo, matchHistory, getMatchHistory}) => {
 
@@ -33,7 +32,7 @@ const MatchHistory = ({userInfo, matchHistory, getMatchHistory}) => {
 
     return (
         <div className="matchHistoryDiv">
-            <button onClick={() => getMatchHistory(userInfo.puuid, userInfo.name)}>Get Match History</button>
+            <button onClick={() => getMatchHistory(userInfo.puuid, userInfo.name)}>Update Match History</button>
             <ul className="matchHistory"> Match Codes: 
                 {matchHistory.map((match, index) => {
                     return (

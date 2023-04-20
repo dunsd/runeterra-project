@@ -8,9 +8,10 @@ const APIDetails = () => {
 
    const [userInfo, setUserInfo] = useState(() => {
 
-        const storedAcc = localStorage.getItem("accountInfo");
-        const parsedAcc = JSON.parse(storedAcc);
-        return parsedAcc || "";
+        // const storedAcc = localStorage.getItem("accountInfo");
+        // const parsedAcc = JSON.parse(storedAcc);
+        // return parsedAcc || "";
+        return "";
    });
    
    const [matchHistory, setMatchHistory] = useState([]);
@@ -51,7 +52,6 @@ const APIDetails = () => {
         setMatchHistory(userMatchHistory);
         console.log(userMatchHistory);
         console.log(matchHistory)
-        //localStorage.setItem('matchHistory', JSON.stringify(userMatchHistory));
         addMatchHistory(userMatchHistory, name);
     }
 
@@ -78,7 +78,6 @@ const APIDetails = () => {
                 matchHistory = {matchHistory}
                 getMatchHistory = {getMatchHistory}
             />
-            <button onClick={() => checkUserExists("Ulfilas")}>New user</button>
         </div>
     )
 }
