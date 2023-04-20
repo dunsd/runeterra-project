@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/Main.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,6 +11,9 @@ const Header = () => {
           A place to view your Legends of Runeterra match history and stats.
         </p>
       </div>
+      <Link to="/profile">
+        Profile
+      </Link>
     </div>
   );
 };

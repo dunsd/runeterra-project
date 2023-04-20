@@ -52,11 +52,12 @@ button:hover {
   align-items: center;
   justify-content: center;
   background-color: #ae9e9b;
+  margin-top: auto;
 }
 
 .headerLeft {
   display: flex;
-  align-self: flex-start;
+  align-self: flex-end;
   flex-direction: column;
 }
 
