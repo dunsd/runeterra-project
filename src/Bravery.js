@@ -1,16 +1,16 @@
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ProfileContent from "./components/ProfileContent";
+import BraveryContent from "./components/BraveryContent";
 
-const Profile = () => {
+const Bravery = () => {
   return (
     <div className="App">
       <Header />
-      <ProfileContent />
+      <BraveryContent />
       <Footer />
     </div>
   );
-}
+};
 
-export default Profile;
+export default Bravery;

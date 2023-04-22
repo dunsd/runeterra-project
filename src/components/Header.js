@@ -5,21 +5,19 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="header">
-      
-        <ul>
-          <li className="homeLink">
-            <Link to="/">
-              <h1>Runeterra Hub</h1>
-            </Link>
-          </li>
-          <li>
-            <Link to="/profile">
-              Profile
-            </Link>
-          </li>
-        </ul>
-      
-      
+      <ul>
+        <li className="homeLink">
+          <Link to="/">
+            <h1>Runeterra Hub</h1>
+          </Link>
+        </li>
+        <li>
+          <Link to="/profile">Profile</Link>
+        </li>
+        <li>
+          <Link to="/bravery">Ultimate Bravery</Link>
+        </li>
+      </ul>
     </div>
   );
 };
