@@ -1,22 +1,50 @@
 
+import set1 from "../dd_files/set1-en_us.js";
+import set2 from "../dd_files/set2-en_us.js";
+import set3 from "../dd_files/set3-en_us.js";
+import set4 from "../dd_files/set4-en_us.js";
+import set5 from "../dd_files/set5-en_us.js";
+import set6 from "../dd_files/set6-en_us.js";
 import set7 from "../dd_files/set7-en_us.js";
 
-// fetch('./src/dd_files/set7-en_us.json')
-//     .then((response) => response.json())
-//     .then((json) => console.log(json));
 
+// const getRandomCard = () => {
+//     // const set = getRandomSet();
+//     // const cardCode = set[Math.floor(Math.random()*set.length)].cardCode;
+//     // console.log(cardCode);
 
-const getRandomCard = () => {
-    const cardCode = set7[Math.floor(Math.random()*set7.length)].cardCode;
-    return buildCardURL("set7", cardCode);
+//     return buildCardURL(getRandomSet(), cardCode);
+// }
+
+const getRandomSet = () => {
+    const rndSet = Math.floor(Math.random()*3) + 1;
+    switch(rndSet) {
+        case 1:
+            return buildCardURL("set1", getRandom(set1));
+        case 2:
+            return buildCardURL("set2", getRandom(set2));
+        case 3:
+            return buildCardURL("set3",getRandom(set3));
+        case 4:
+            return buildCardURL("set4", getRandom(set4));
+        case 5:
+            return buildCardURL("set5", getRandom(set5));
+        case 6:
+            return buildCardURL("set6",getRandom(set6));
+        case 7:
+            return buildCardURL("set7",getRandom(set7));
+        default:
+            console.log("Failed");
+
+    }
 }
 
-// const getRandomRegion = () => {
-
-// }
+const getRandom = (set) => {
+    return set[Math.floor(Math.random()*set.length)].cardCode;
+}
 
 const buildCardURL = (set, code) => {
     return "https://dd.b.pvp.net/latest/" + set + "/en_us/img/cards/" + code + ".png";
 }
 
-export {getRandomCard}
+export { getRandomSet}

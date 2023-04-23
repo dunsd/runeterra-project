@@ -1,5 +1,5 @@
 import React from "react";
-import { getRandomCard } from "../services/braveryHandlers";
+import { getRandomSet } from "../services/braveryHandlers";
 import { useState } from "react";
 import "./css/BraveryContent.css";
 
@@ -14,11 +14,11 @@ const BraveryContent = () => {
             <div className="cardImages">
                 <div className="cardImg1">
                     <img src={card1} alt="test"></img>
-                    <button onClick={() => setCard1(getRandomCard())}>Get Set7</button>
+                    <button onClick={() => setCard1(getRandomSet())}>Get Set7</button>
                 </div>
                 <div className="cardImg2">
                     <img src={card2} alt="test"></img>
-                    <button onClick={() => setCard2(getRandomCard())}>Get Set7</button>
+                    <button onClick={() => setCard2(getRandomSet())}>Get Set7</button>
                 </div>
             </div>
             
