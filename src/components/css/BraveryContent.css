@@ -1,0 +1,31 @@
+.cardImg1, .cardImg2 {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+img {
+    width: auto;
+    height: 100%;
+}
+
+.cardImages {
+    display: flex;
+    gap: 1em;
+    flex-grow: 1;
+    padding: 1.5em;
+    box-shadow: rgb(204, 204, 204) 0px 0px 0.714286rem;
+    width: 60%;
+    justify-content: center;
+    
+}
+
+.braveryContet {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5%;
+}

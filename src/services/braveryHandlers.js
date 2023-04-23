@@ -7,15 +7,9 @@ import set7 from "../dd_files/set7-en_us.js";
 
 
 const getRandomCard = () => {
-    console.log(set7);
     const cardCode = set7[Math.floor(Math.random()*set7.length)].cardCode;
-    console.log(cardCode);
-    console.log(buildCardURL("set7", cardCode));
+    return buildCardURL("set7", cardCode);
 }
-
-// async function getCardArr = () => {
-
-// }
 
 // const getRandomRegion = () => {
 
