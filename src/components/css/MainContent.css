@@ -1,0 +1,16 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    flex-grow: 1;
+    padding: 1.5em;
+    box-shadow: rgb(204, 204, 204) 0px 0px 0.714286rem;
+    width: 60%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.exampleImage {
+    width: 100%;
+    height: auto;
+}

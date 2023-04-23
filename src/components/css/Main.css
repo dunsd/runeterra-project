@@ -1,4 +1,4 @@
-.maincontent, .braveryContent, .profileContent {
+.mainContent, .braveryContent, .profileContent {
   display: flex;
   flex: 1;
   justify-content: flex-start;

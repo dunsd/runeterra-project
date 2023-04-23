@@ -5,7 +5,7 @@ import APIDetails from "./APIDetails";
 
 const ProfileContent = () => {
   return (
-    <div className="maincontent">
+    <div className="profileContent">
       <UserForm />
       <APIDetails />
     </div>
