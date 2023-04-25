@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Runeterra Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is designed to interface with the game [Legends of Runeterra](https://playruneterra.com/en-us/), made by Riot Games. It handles this by making requests to the [Riot API](https://developer.riotgames.com/). This requires a private API key. Currently this project is not deployed fully as a back-end needs to be implemented to hide the API key from the front-end.
 
-## Available Scripts
+# Features
+ - View match history
+ - View account details
+ - View pop-up of specific match details
+ - Store match history of users in Firebase
+ - Ultimate Bravery mode: This generates two random cards from all sets and then you should build a deck that uses 3 copies of both and try and win.
 
-In the project directory, you can run:
+## Technology Used
+ - Create React App
+ - Javascript
+ - CSS
 
-### `npm start`
+## Planned Improvements
+ - Change match history display to show more details (requires further storage options to limit API requests)
+ - Add user authentication using Firebase Auth to provide read/write permissions
+ - Add calculator for winrate
+ - Add profile page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How To Use
+If you have a Riot Account with previous matches played on Legends of Runeterra, then click the "Change User" button and enter your username. Then click "Get User" below this to make a request to the API and retrieve your account details.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+If you have previously done this then it will fetch the data stored previously from Firebase.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![user-info-example](https://user-images.githubusercontent.com/64646361/234410235-fa970a4a-f5c8-47a0-a9ed-66879ef303a6.png)
 
-### `npm run build`
+Click the "Update Match History" button to retrieve the most recent 20 matches on your account. This will display the match codes.
+![match-history-example](https://user-images.githubusercontent.com/64646361/234410284-4818e36c-1ceb-42cf-ba24-0a092907be8f.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Click "Show Match Info" to open up a pop-up that makes an API request for further detail on that specific match.
+![match-info-example](https://user-images.githubusercontent.com/64646361/234410303-301baded-80b2-4b2f-ac25-9fa927631656.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Navigate to the Ultimate Bravery tab and click "Generate Card" under both images to come up with a new deck idea.
+![ultimate-bravery-example](https://user-images.githubusercontent.com/64646361/234410317-9ae1fa91-8d3b-493f-815f-75f97b2de212.png)
