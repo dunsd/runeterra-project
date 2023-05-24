@@ -45,22 +45,25 @@ lorRoutes.get("/matchhistory/:puuid", async (req, res) => {
     }
 })
 
-async function fetchMatchHistory(puuid) {
-    try {
-      const response = await fetch(
-        "https://europe.api.riotgames.com/lor/match/v1/matches/by-puuid/" +
-          puuid +
-          "/ids?api_key=" +
-          key,
-        {
-          mode: "cors",
-        }
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+lorRoutes.get("/matchinfo/:match", async (req, res) => {
+  try {
+    const matchId = await req.params.match;
+    const response = await fetch(
+      "https://europe.api.riotgames.com/lor/match/v1/matches/" +
+        matchId +
+        "?api_key=" +
+        key,
+      {
+        mode: "cors",
+      }
+    );
+    const data = await response.json();
+    res.json(data);
   }
+  catch (error) {
+    console.log(error);
+  }
+})
+
 
 module.exports = lorRoutes;
