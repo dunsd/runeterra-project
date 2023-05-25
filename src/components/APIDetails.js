@@ -28,6 +28,7 @@ const APIDetails = () => {
     console.log(userInfo);
   }
 
+  //Check user is stored in firebase and retrieve data
   async function userCheck() {
     const currentUser = localStorage.getItem("userName");
     const parsedUser = JSON.parse(currentUser);
