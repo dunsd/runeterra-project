@@ -69,6 +69,7 @@ const APIDetails = () => {
     <div className="matchContentDiv">
       <div className="userInfo">
         <button onClick={() => userCheck()}>Get User</button>
+        <button>Update User Info</button>
         <div className="userName">
           <p className="userLabel">Account Name:</p> {userInfo.name || ""}
         </div>

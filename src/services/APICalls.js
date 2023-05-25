@@ -78,8 +78,15 @@ const fetchMatchHistory = async (puuid) => {
 //   }
 // }
 
-const fetchMatchInfo = async () => {
-
+const fetchMatchInfo = async (matchid) => {
+  const result = await fetch(`http://localhost:8000/matchinfo/${matchid}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await result.json();
+  return data;
 }
 
 export { fetchUserDetails, fetchMatchHistory, fetchMatchInfo };
