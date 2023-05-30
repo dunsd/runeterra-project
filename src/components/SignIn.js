@@ -1,8 +1,10 @@
 import React from "react";
-import { GoogleAuthProvider } from "firebase"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "@firebase/auth";
 import { useState } from "react";
 
 const SignIn = () => {
+
+    const auth = getAuth();
     const [email, setEmail] = useState("");
     const handleEmailChange = (e) => {
         const email = e.target.value;
@@ -11,9 +13,32 @@ const SignIn = () => {
 
     const [password, setPassword] = useState("");
     const handlePassChange = (e) => {
-        const email = e.target.value;
-        setEmail(email);
+        const pass = e.target.value;
+        setPassword(pass);
     }
+
+    const createUser = async (e) => {
+        e.preventDefault();
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    const signInUser = async (e) => {
+        e.preventDefault();
+        try {
+            const result = await signInWithEmailAndPassword(auth, email, password);
+            console.log(result);
+        }
+        catch (error) {
+            console.log(error);
+        }
+        
+    }
+
     return (
         <div>
             <form>
@@ -31,8 +56,9 @@ const SignIn = () => {
                 value={password}
                 onChange={handlePassChange}
                 />
+                <button onClick={signInUser}>Create User</button>
             </form>
-            Sign In
+          
         </div>
     )
 }

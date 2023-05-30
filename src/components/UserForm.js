@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import SignIn from "./SignIn";
+
 
 const UserForm = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,6 +44,7 @@ const UserForm = () => {
       )}
 
       <div>Current User: {userName}</div>
+      <SignIn />
     </div>
   );
 };
