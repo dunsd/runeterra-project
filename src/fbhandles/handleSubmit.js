@@ -23,8 +23,10 @@ const handleSubmit = (testdata) => {
 };
 
 async function newUser(user) {
-  await setDoc(doc(firestore, "users", user.name), {
-    user: user,
+  await setDoc(doc(firestore, "users", user.email), {
+    uid: user.uid,
+    email: user.email,
+    
   });
 }
 

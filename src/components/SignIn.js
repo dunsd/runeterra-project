@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { auth } from "../firebase_setup/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "@firebase/auth";
+import { newUser } from "../fbhandles/handleSubmit";
 import { useState } from "react";
 
 const SignIn = () => {
@@ -24,7 +26,9 @@ const SignIn = () => {
   const createUser = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      const user = result.user;
+      newUser(user);
     } catch (error) {
       console.log(error);
     }
@@ -34,11 +38,17 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
+      const user = result.user;
       console.log(result);
+      console.log(user);
     } catch (error) {
       console.log(error);
     }
   };
+
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user))
+  // })
 
   return (
     <div>
@@ -57,7 +67,8 @@ const SignIn = () => {
           value={password}
           onChange={handlePassChange}
         />
-        <button onClick={signInUser}>Create User</button>
+        <button onClick={createUser}>Create User</button>
+        <button onClick={signInUser}>Sign In</button>
       </form>
     </div>
   );
