@@ -5,6 +5,9 @@ import {
   doc,
   updateDoc,
   getDoc,
+  where,
+  query,
+  getDocs,
 } from "@firebase/firestore";
 import { firestore } from "../firebase_setup/firebase";
 
@@ -23,11 +26,14 @@ const handleSubmit = (testdata) => {
 };
 
 async function newUser(user) {
+  // const checkUser = query(collection(firestore, "users"), where("uid", "==", user.uid));
+  // const usersList = getDocs(checkUser);
+  // if((await usersList).docs.length === 0){
   await setDoc(doc(firestore, "users", user.email), {
     uid: user.uid,
     email: user.email,
-    
   });
+//}
 }
 
 async function addMatchHistory(matches, user) {

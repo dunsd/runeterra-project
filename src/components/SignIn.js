@@ -46,6 +46,11 @@ const SignIn = () => {
     }
   };
 
+  const signOut = (e) => {
+    e.preventDefault();
+    signOut(auth);
+  }
+
   // useEffect(() => {
   //   onAuthStateChanged(auth, (user))
   // })
@@ -69,6 +74,7 @@ const SignIn = () => {
         />
         <button onClick={createUser}>Create User</button>
         <button onClick={signInUser}>Sign In</button>
+        <button onClick={signOut}>Sign Out</button>
       </form>
     </div>
   );
