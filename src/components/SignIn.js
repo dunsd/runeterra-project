@@ -9,7 +9,7 @@ import {
 import { newUser } from "../fbhandles/handleSubmit";
 import { useState } from "react";
 
-const SignIn = () => {
+const SignIn = ({user, setUser}) => {
   //const auth = getAuth();
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
@@ -17,7 +17,7 @@ const SignIn = () => {
     setEmail(email);
   };
 
-  //const [user, setUser] = useState("");
+  
 
   const [password, setPassword] = useState("");
   const handlePassChange = (e) => {
@@ -31,6 +31,7 @@ const SignIn = () => {
       const result = await createUserWithEmailAndPassword(auth, email, password);
       const user = result.user;
       newUser(user);
+      setUser(user);
     } catch (error) {
       console.log(error);
     }
@@ -41,6 +42,7 @@ const SignIn = () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
+      setUser(user);
       //console.log(result);
       console.log(user);
     } catch (error) {
@@ -51,14 +53,16 @@ const SignIn = () => {
   const signOut = () => {
 
     auth.signOut();
+    setUser(null);
     console.log("Signed Out")
   }
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       console.log("Auth change")
+      console.log(user);
     })
-  }, [])
+  }, [user])
 
   return (
     <div>

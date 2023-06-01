@@ -4,12 +4,16 @@ import SignIn from "./SignIn";
 
 
 const UserForm = () => {
+
+  const [user, setUser] = useState("");
+
   const [isVisible, setIsVisible] = useState(false);
 
   const [userName, setUserName] = useState(() => {
-    const storedUser = localStorage.getItem("userName");
-    const parsedUser = JSON.parse(storedUser);
-    return parsedUser || "";
+    // const storedUser = localStorage.getItem("userName");
+    // const parsedUser = JSON.parse(storedUser);
+    // return parsedUser || "";
+    return "";
   });
 
   const handleUserNameChange = (e) => {
@@ -44,7 +48,10 @@ const UserForm = () => {
       )}
 
       <div>Current User: {userName}</div>
-      <SignIn />
+      {/* <SignIn 
+      user={user}
+      setUser={setUser}
+      /> */}
     </div>
   );
 };
