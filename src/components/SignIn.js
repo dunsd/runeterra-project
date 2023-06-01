@@ -17,6 +17,8 @@ const SignIn = () => {
     setEmail(email);
   };
 
+  //const [user, setUser] = useState("");
+
   const [password, setPassword] = useState("");
   const handlePassChange = (e) => {
     const pass = e.target.value;
@@ -39,21 +41,24 @@ const SignIn = () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
-      console.log(result);
+      //console.log(result);
       console.log(user);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const signOut = (e) => {
-    e.preventDefault();
-    signOut(auth);
+  const signOut = () => {
+
+    auth.signOut();
+    console.log("Signed Out")
   }
 
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user))
-  // })
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log("Auth change")
+    })
+  }, [])
 
   return (
     <div>
@@ -74,8 +79,8 @@ const SignIn = () => {
         />
         <button onClick={createUser}>Create User</button>
         <button onClick={signInUser}>Sign In</button>
-        <button onClick={signOut}>Sign Out</button>
       </form>
+      <button onClick={signOut}>Sign Out</button>
     </div>
   );
 };
