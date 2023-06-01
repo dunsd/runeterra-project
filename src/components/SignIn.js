@@ -9,15 +9,13 @@ import {
 import { newUser } from "../fbhandles/handleSubmit";
 import { useState } from "react";
 
-const SignIn = ({user, setUser}) => {
+const SignIn = ({ user, setUser }) => {
   //const auth = getAuth();
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     const email = e.target.value;
     setEmail(email);
   };
-
-  
 
   const [password, setPassword] = useState("");
   const handlePassChange = (e) => {
@@ -28,7 +26,11 @@ const SignIn = ({user, setUser}) => {
   const createUser = async (e) => {
     e.preventDefault();
     try {
-      const result = await createUserWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = result.user;
       newUser(user);
       setUser(user);
@@ -51,22 +53,21 @@ const SignIn = ({user, setUser}) => {
   };
 
   const signOut = () => {
-
     auth.signOut();
     setUser(null);
-    console.log("Signed Out")
-  }
+    console.log("Signed Out");
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log("Auth change")
+      console.log("Auth change");
       console.log(user);
-    })
-  }, [user])
+    });
+  }, [user]);
 
   return (
-    <div>
-      <form>
+    <div className="signIn">
+      <form className="signInForm">
         <label htmlFor="emailEntry">Email:</label>
         <input
           name="emailEntry"
@@ -77,14 +78,16 @@ const SignIn = ({user, setUser}) => {
         <label htmlFor="passEntry">Password:</label>
         <input
           name="passEntry"
-          type="text"
+          type="password"
           value={password}
           onChange={handlePassChange}
         />
+      </form>
+      <div className="signButtons">
         <button onClick={createUser}>Create User</button>
         <button onClick={signInUser}>Sign In</button>
-      </form>
-      <button onClick={signOut}>Sign Out</button>
+        <button onClick={signOut}>Sign Out</button>
+      </div>
     </div>
   );
 };

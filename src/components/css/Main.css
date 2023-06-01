@@ -96,7 +96,7 @@ button:hover {
 }
 
 .userForm,
-.userInfo {
+.userInfo, .signIn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,6 +104,16 @@ button:hover {
   padding: 1.5em;
   width: 60%;
   gap: 10px;
+}
+
+.signInForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.signButtons {
+  display: flex;
+  gap: 1em;
 }
 
 .userInfo div {
