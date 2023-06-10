@@ -28,6 +28,7 @@ async function addMatchHistory(matches, user) {
   });
 }
 
+//return data assigned to a user
 async function getMatches(user) {
   const userRef = doc(firestore, "users", user);
   const docSnap = await getDoc(userRef);

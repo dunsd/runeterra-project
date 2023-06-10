@@ -106,6 +106,12 @@ button:hover {
   gap: 10px;
 }
 
+.profileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
 .signInForm {
   display: flex;
   flex-direction: column;

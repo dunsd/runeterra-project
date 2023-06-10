@@ -5,16 +5,9 @@ import SignIn from "./SignIn";
 
 const UserForm = () => {
 
-  const [user, setUser] = useState("");
-
   const [isVisible, setIsVisible] = useState(false);
 
-  const [userName, setUserName] = useState(() => {
-    // const storedUser = localStorage.getItem("userName");
-    // const parsedUser = JSON.parse(storedUser);
-    // return parsedUser || "";
-    return "";
-  });
+  const [userName, setUserName] = useState("");
 
   const handleUserNameChange = (e) => {
     const name = e.target.value;

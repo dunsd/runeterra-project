@@ -8,12 +8,7 @@ import {
 } from "../fbhandles/handleSubmit";
 
 const APIDetails = () => {
-  const [userInfo, setUserInfo] = useState(() => {
-    // const storedAcc = localStorage.getItem("accountInfo");
-    // const parsedAcc = JSON.parse(storedAcc);
-    // return parsedAcc || "";
-    return "";
-  });
+  const [userInfo, setUserInfo] = useState("");
 
   const [matchHistory, setMatchHistory] = useState([]);
 
