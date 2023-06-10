@@ -11,31 +11,15 @@ import {
 } from "@firebase/firestore";
 import { firestore } from "../firebase_setup/firebase";
 
-const handleSubmit = (testdata) => {
-  const ref = collection(firestore, "test_data");
-
-  let data = {
-    testData: testdata,
-  };
-
-  try {
-    addDoc(ref, data);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
+//create user with email as the id
 async function newUser(user) {
-  // const checkUser = query(collection(firestore, "users"), where("uid", "==", user.uid));
-  // const usersList = getDocs(checkUser);
-  // if((await usersList).docs.length === 0){
   await setDoc(doc(firestore, "users", user.email), {
     uid: user.uid,
     email: user.email,
   });
-//}
 }
 
+//add array of Match History to Users.
 async function addMatchHistory(matches, user) {
   console.log(user);
   const userRef = doc(firestore, "users", user);
@@ -50,6 +34,7 @@ async function getMatches(user) {
   console.log(docSnap.data());
 }
 
+//check if user exists in firestore
 async function checkUserExists(userName) {
   const userRef = doc(firestore, "users", userName);
   const userSnap = await getDoc(userRef);
@@ -60,4 +45,4 @@ async function checkUserExists(userName) {
   }
 }
 
-export { handleSubmit, newUser, addMatchHistory, getMatches, checkUserExists };
+export { newUser, addMatchHistory, getMatches, checkUserExists };
