@@ -5,13 +5,15 @@ import {
   checkUserExists,
   addMatchHistory,
   newUser,
-} from "../fbhandles/handleSubmit";
+} from "../fbhandles/firestoreFunctions";
 
 const APIDetails = () => {
   const [userInfo, setUserInfo] = useState("");
 
   const [matchHistory, setMatchHistory] = useState([]);
 
+
+  //fetch userinfo from riot api 
   async function getUser() {
     const currentUser = localStorage.getItem("userName");
     const parsedUser = JSON.parse(currentUser);
@@ -31,10 +33,7 @@ const APIDetails = () => {
     if (userCheck !== false) {
       setUserInfo(userCheck.user);
       if (userCheck.matches) setMatchHistory(userCheck.matches);
-      console.log(matchHistory);
       console.log("Exists");
-      console.log(userCheck.user);
-      console.log(userCheck.matches);
     } else {
       const newUserData = await fetchUserDetails(parsedUser);
       console.log(parsedUser);
@@ -43,13 +42,17 @@ const APIDetails = () => {
     }
   }
 
-  async function getMatchHistory(puuid, name) {
-    const userMatchHistory = await fetchMatchHistory(puuid);
-    setMatchHistory(userMatchHistory);
-    console.log(userMatchHistory);
-    console.log(matchHistory);
-    addMatchHistory(userMatchHistory, name);
-  }
+  //use puuid to retrieve match history and set it to firestore
+  const getMatchHistory = async (puuid, name) => {
+    try {
+      const userMatchHistory = await fetchMatchHistory(puuid);
+      setMatchHistory(userMatchHistory);
+      console.log(matchHistory);
+      addMatchHistory(userMatchHistory, name);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const checkValidUser = (userData) => {
     if (userData === undefined) {
@@ -64,7 +67,7 @@ const APIDetails = () => {
     <div className="matchContentDiv">
       <div className="userInfo">
         <button onClick={() => userCheck()}>Get User</button>
-        <button>Update User Info</button>
+        <button onClick={() => getUser()}>Update User Info</button>
         <div className="userName">
           <p className="userLabel">Account Name:</p> {userInfo.name || ""}
         </div>

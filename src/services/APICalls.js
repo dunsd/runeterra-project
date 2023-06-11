@@ -1,41 +1,50 @@
-
 //fetch user info via puuid
 const fetchUserDetails = async (id) => {
-  const result = await fetch(`http://localhost:8000/user/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await result.json();
-  console.log(`Data: ${data}`)
-  return data;
-}
+  try {
+    const result = await fetch(`http://localhost:8000/user/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await result.json();
+    console.log(`Data: ${data}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //fetch array of match codes
 const fetchMatchHistory = async (puuid) => {
-
-  const result = await fetch(`http://localhost:8000/matchhistory/${puuid}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await result.json();
-  return data;
-
-} 
+  try {
+    const result = await fetch(`http://localhost:8000/matchhistory/${puuid}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await result.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //Fetch individual match info via match code
 const fetchMatchInfo = async (matchid) => {
-  const result = await fetch(`http://localhost:8000/matchinfo/${matchid}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await result.json();
-  return data;
-}
+  try {
+    const result = await fetch(`http://localhost:8000/matchinfo/${matchid}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await result.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export { fetchUserDetails, fetchMatchHistory, fetchMatchInfo };

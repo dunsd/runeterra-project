@@ -4,13 +4,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,
+
 } from "@firebase/auth";
-import { newUser } from "../fbhandles/handleSubmit";
+import { newUser } from "../fbhandles/firestoreFunctions";
 import { useState } from "react";
 
 const SignIn = ({ user, setUser }) => {
-  //const auth = getAuth();
+
+  //handlers for entering values
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     const email = e.target.value;
@@ -23,6 +24,8 @@ const SignIn = ({ user, setUser }) => {
     setPassword(pass);
   };
 
+
+  //create user with firebase auth and store in firestore
   const createUser = async (e) => {
     e.preventDefault();
     try {
@@ -45,7 +48,6 @@ const SignIn = ({ user, setUser }) => {
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
       setUser(user);
-      //console.log(result);
       console.log(user);
     } catch (error) {
       console.log(error);
@@ -58,10 +60,13 @@ const SignIn = ({ user, setUser }) => {
     console.log("Signed Out");
   };
 
+  //monitor if user state changes
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       console.log("Auth change");
       console.log(user);
+
+      //To add, re-route/action on sign in/out
     });
   }, [user]);
 
