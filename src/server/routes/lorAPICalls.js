@@ -1,9 +1,12 @@
 const express = require("express");
 
+//API key taken from .env to hide it
 const key = process.env.REACT_APP_RIOT_KEY;
 
+//middleware router
 const lorRoutes = express.Router();
 
+//return user data from account name
 lorRoutes.get("/user/:username", async (req, res) => {
   try {
     const user = await req.params.username;
@@ -23,6 +26,7 @@ lorRoutes.get("/user/:username", async (req, res) => {
   }
 });
 
+// return array of matchhistory codes via puuid (puuid = unique id Riot created)
 lorRoutes.get("/matchhistory/:puuid", async (req, res) => {
     try {
         const puuid = await req.params.puuid;
@@ -45,6 +49,7 @@ lorRoutes.get("/matchhistory/:puuid", async (req, res) => {
     }
 })
 
+// fetch details of a specific match via match code
 lorRoutes.get("/matchinfo/:match", async (req, res) => {
   try {
     const matchId = await req.params.match;

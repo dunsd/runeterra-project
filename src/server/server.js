@@ -9,13 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(require("./routes/lorAPICalls"));
 
-
-app.get('/', (req, res) => {
-    console.log("Hello world")
-    res.status(200)
-    res.json({message: "hello world"})
-})
-
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);
 })

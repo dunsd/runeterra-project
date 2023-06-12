@@ -41,7 +41,7 @@ const SignIn = ({ user, setUser }) => {
       console.log(error);
     }
   };
-
+  //sign in and set current user
   const signInUser = async (e) => {
     e.preventDefault();
     try {
@@ -58,6 +58,8 @@ const SignIn = ({ user, setUser }) => {
     auth.signOut();
     setUser(null);
     console.log("Signed Out");
+    setEmail("");
+    setPassword("");
   };
 
   //monitor if user state changes
