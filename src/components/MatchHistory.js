@@ -3,10 +3,13 @@ import { fetchMatchInfo } from "../services/APICalls";
 import MatchPopUp from "./MatchPopUp";
 
 const MatchHistory = ({ userInfo, matchHistory, getMatchHistory }) => {
+  //match code to be displayed in pop up
   const [activeMatch, setActiveMatch] = useState("");
 
+  //pop up for match info
   const [matchToggle, setMatchToggle] = useState(false);
 
+  //fetch individual match info via code
   async function getMatchInfo(e) {
     const matchIndex = e.target.id;
     const matchInfo = await fetchMatchInfo(matchHistory[matchIndex]);

@@ -19,8 +19,8 @@ async function addMatchHistory(matches, user) {
     });
   } catch (error) {
     console.log(error);
-  }
-}
+  };
+};
 
 //return data assigned to a user
 async function getMatches(user) {
@@ -30,8 +30,8 @@ async function getMatches(user) {
     console.log(docSnap.data());
   } catch (error) {
     console.log(error);
-  }
-}
+  };
+};
 
 //check if user exists in firestore
 async function checkUserExists(userName) {
@@ -45,7 +45,7 @@ async function checkUserExists(userName) {
     }
   } catch (error) {
     console.log(error);
-  }
-}
+  };
+};
 
 export { newUser, addMatchHistory, getMatches, checkUserExists };

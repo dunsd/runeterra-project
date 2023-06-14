@@ -1,4 +1,4 @@
-//fetch user info via puuid
+//fetch user info via username
 const fetchUserDetails = async (id) => {
   try {
     const result = await fetch(`http://localhost:8000/user/${id}`, {
@@ -8,14 +8,14 @@ const fetchUserDetails = async (id) => {
       },
     });
     const data = await result.json();
-    console.log(`Data: ${data}`);
+    //console.log(`Data: ${data}`);
     return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-//fetch array of match codes
+//fetch array of match codes from puuid
 const fetchMatchHistory = async (puuid) => {
   try {
     const result = await fetch(`http://localhost:8000/matchhistory/${puuid}`, {
