@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { fetchMatchInfo } from "../services/APICalls";
 import MatchPopUp from "./MatchPopUp";
 
-const MatchHistory = ({ userInfo, matchHistory, getMatchHistory }) => {
+const MatchHistory = ({ userInfo, matchHistory, getMatchHistory, user }) => {
   //match code to be displayed in pop up
   const [activeMatch, setActiveMatch] = useState("");
 
@@ -21,7 +21,7 @@ const MatchHistory = ({ userInfo, matchHistory, getMatchHistory }) => {
 
   return (
     <div className="matchHistoryDiv">
-      <button onClick={() => getMatchHistory(userInfo.puuid, userInfo.name)}>
+      <button onClick={() => getMatchHistory(userInfo.puuid, userInfo.name, user)}>
         Update Match History
       </button>
       <ul className="matchHistory">

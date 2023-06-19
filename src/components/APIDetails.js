@@ -5,9 +5,10 @@ import {
   checkUserExists,
   addMatchHistory,
   newUser,
+  updateUserData,
 } from "../fbhandles/firestoreFunctions";
 
-const APIDetails = () => {
+const APIDetails = ({ user }) => {
   const [userInfo, setUserInfo] = useState("");
 
   const [matchHistory, setMatchHistory] = useState([]);
@@ -21,9 +22,9 @@ const APIDetails = () => {
     console.log(userData);
     if (!checkValidUser(userData)) userData = "";
     setUserInfo(userData);
-    localStorage.setItem("accountInfo", JSON.stringify(userData));
-    console.log(userInfo);
-  }
+    //localStorage.setItem("accountInfo", JSON.stringify(userData));
+    updateUserData(userData);
+  };
 
   //Check user is stored in firebase and retrieve data
   async function userCheck() {
@@ -43,12 +44,12 @@ const APIDetails = () => {
   }
 
   //use puuid to retrieve match history and set it to firestore
-  const getMatchHistory = async (puuid, name) => {
+  const getMatchHistory = async (puuid, name, user) => {
     try {
       const userMatchHistory = await fetchMatchHistory(puuid);
       setMatchHistory(userMatchHistory);
       console.log(matchHistory);
-      addMatchHistory(userMatchHistory, name);
+      addMatchHistory(userMatchHistory, name, user);
     } catch (error) {
       console.log(error);
     }
@@ -83,6 +84,7 @@ const APIDetails = () => {
         userInfo={userInfo}
         matchHistory={matchHistory}
         getMatchHistory={getMatchHistory}
+        user={user}
       />
     </div>
   );

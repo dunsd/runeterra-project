@@ -12,7 +12,8 @@ const ProfileContent = () => {
     <div className="profileContent">
       <SignIn user={user} setUser={setUser} />
       <UserForm />
-      {user && <APIDetails />}
+      {user && <APIDetails 
+      user={user}/>}
     </div>
   );
 };
